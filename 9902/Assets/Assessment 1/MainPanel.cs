@@ -6,9 +6,17 @@ using UnityEngine.UI;
 public class MainPanel : MonoBehaviour
 {
     public GameObject startPanel;
+    public Button startBtn;
+
     public GameObject searchPanel;
     public Button searchBtn;
-    public Button startBtn;
+    public Button fuelBtn;
+    public Button stateBtn;
+
+    public GameObject fuelPanel;
+    public GameObject statePanel;
+    public Button close1Btn;
+    public Button close2Btn;
 
     public Camera uicamera;
     public GameObject firstPerson;
@@ -19,6 +27,22 @@ public class MainPanel : MonoBehaviour
     {
         startBtn.onClick.AddListener(OnStartClick);
         searchBtn.onClick.AddListener(OnSearchClick);
+        fuelBtn.onClick.AddListener(() => { 
+            searchPanel.SetActive(false);
+            fuelPanel.SetActive(true);
+        });
+        stateBtn.onClick.AddListener(() =>
+        {
+            statePanel.SetActive(true);
+            searchPanel.SetActive(false);
+        });
+
+        close1Btn.onClick.AddListener(() => {
+            fuelPanel.SetActive(false);
+        });
+        close2Btn.onClick.AddListener(() => {
+            statePanel.SetActive(false);
+        });
     }
 
     private void OnSearchClick()
